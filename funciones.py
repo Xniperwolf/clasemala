@@ -22,7 +22,23 @@ def listar_trabajadores():
             print(f"NOMBRE: {t[0]}\CARGO: {t[1]}\nBRUTO: {t[2]}\nDESC sueldo {t[3]}\nDESC AFP {t[4]}\nLIQUIDO {t[5]}")
 
 def exportar_archivo_txt():
-    pass
+    if len(trabajadores) == 0:
+        print("Lista vacía, registre trabajadores en la opción 1")
+    else:
+        cargo = int(input("Ingrese cargo para planilla(1:CEO,2:DESARROLLADOR,3:ANALISTA,4:TODOS): "))
+        if cargo == 4:
+            nombre_archivo = input("Ingrese nombre de archivo: ")
+            with open(nombre_archivo+".txt","w") as archivo:
+                for t in trabajadores:
+                    archivo.write(f"NOMBRE: {t[0]}\CARGO: {t[1]}\nBRUTO: {t[2]}\nDESC sueldo {t[3]}\nDESC AFP {t[4]}\nLIQUIDO {t[5]}")
+            print("Archivo creado con éxito!")
+        else:
+            nombre_archivo = input("Ingrese nombre de archivo: ")
+            with open(nombre_archivo+".txt","w") as archivo:
+                for t in trabajadores:
+                    if cargos[cargo-1]==t[1]:
+                        archivo.write(f"NOMBRE: {t[0]}\CARGO: {t[1]}\nBRUTO: {t[2]}\nDESC sueldo {t[3]}\nDESC AFP {t[4]}\nLIQUIDO {t[5]}")
+            print("Archivo creado con éxito!")
 
 def salir():
     print("Muchas gracias, adios!")
