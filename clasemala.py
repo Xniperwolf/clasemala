@@ -17,7 +17,7 @@ while True:
         registrar_trabajador()
 
     elif opc == 2:
-        pass
+        listar_trabajadores()
     elif opc == 3:
         pass
     else:
